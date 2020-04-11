@@ -13,6 +13,7 @@ function App() {
  // Setting states
  const [latest, setlatest] = useState([]);
  const [results, setResults] = useState([]);
+ const [searchCountry , setSearchCountry] = useState("");
 
 
 
@@ -39,11 +40,14 @@ useEffect(()=>{
 const date = new Date(parseInt(latest.updated));
 const lastupdated = date.toString();
 
+const filterCountry = results.filter(item =>{
+  return    searchCountry !== "" ? item.country === searchCountry : item
+})
 
-const countires = results.map(((data, i) =>{
+const countires = filterCountry.map(((data, i) =>{
   return(
 <Card  key={i}  bg='light' text='dark' className='text-center' style={{margin:"10px"}}>
-<Card.Img variant="top" src={data.countryInfo.flag} style={{height:"180px"}} />
+<Card.Img variant="top" src={data.countryInfo.flag} style={{height:"180px", width:"80%" , margin:"0 auto"}} />
     <Card.Body>
       <Card.Title>{data.country}</Card.Title>
       <Card.Text>Cases: {data.cases}</Card.Text>
@@ -72,6 +76,7 @@ var queries = [{
   columns: 3,
   query: 'min-width: 1000px'
 }];
+
 
 
   return (
@@ -114,7 +119,7 @@ var queries = [{
 </CardDeck>
 <Form>
   <Form.Group controlId="formGroupSearch">
-    <Form.Control type="text" placeholder="Search a Country" />
+    <Form.Control type="text" placeholder="Search a Country"  onChange={ e => setSearchCountry(e.target.value)}/>
   </Form.Group>
   
 </Form>
