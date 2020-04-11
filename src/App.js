@@ -43,7 +43,7 @@ const lastupdated = date.toString();
 const countires = results.map(((data, i) =>{
   return(
 <Card  key={i}  bg='light' text='dark' className='text-center' style={{margin:"10px"}}>
-<Card.Img variant="top" src={data.countryInfo.flag} />
+<Card.Img variant="top" src={data.countryInfo.flag} style={{height:"180px"}} />
     <Card.Body>
       <Card.Title>{data.country}</Card.Title>
       <Card.Text>Cases: {data.cases}</Card.Text>
