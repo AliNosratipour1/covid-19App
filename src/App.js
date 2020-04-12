@@ -94,6 +94,10 @@ var queries = [{
 
   return (
     <div>
+    <header style={{width:"100%", height:"120px", backgroundColor:"#6b0b0b",
+     textAlign:"center",color:"white", fontSize:"2rem"}}>
+   Created by: Ali Nosratipour
+    </header>
      <CardDeck>
   <Card bg='secondary' text='white' className='text-center' style={{margin:"10px"}}>
     
