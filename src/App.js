@@ -17,6 +17,7 @@ function App() {
 
 
 
+
  //Fetching API from its Endpoint
 useEffect(()=>{
   axios
@@ -26,6 +27,7 @@ useEffect(()=>{
 ])
 
   .then(resArr =>{
+    console.log(resArr[1].data);
     setlatest(resArr[0].data);
     setResults(resArr[1].data);
   })
@@ -40,17 +42,27 @@ useEffect(()=>{
 const date = new Date(parseInt(latest.updated));
 const lastupdated = date.toString();
 
+ results.sort((a,b)=> {
+return b.cases - a.cases;
+})
+
+
 const filterCountries = results.filter(item =>{
   return    searchCountries !== "" ? item.country.toLowerCase().includes(searchCountries.toLowerCase())
    : item;
 });
 
+
+
+
+
 const countires = filterCountries.map(((data, i) =>{
+  //const max = data.cases
   return(
 <Card  key={i}  bg='light' text='dark' className='text-center' style={{margin:"10px"}}>
 <Card.Img variant="top" src={data.countryInfo.flag} style={{height:"180px", width:"80%" , margin:"0 auto"}} />
     <Card.Body>
-      <Card.Title>{data.country}</Card.Title>
+      <Card.Title>{data.country }</Card.Title>
       <Card.Text>Cases: {data.cases}</Card.Text>
       <Card.Text>Deaths: {data.deaths}</Card.Text>
       <Card.Text>Recovered: {data.recovered}</Card.Text>
@@ -118,9 +130,16 @@ var queries = [{
     </Card.Footer>
   </Card>
 </CardDeck>
+<br/>
 <Form>
   <Form.Group controlId="formGroupSearch">
-    <Form.Control type="text" placeholder="Search a Country"  onChange={ e => setSearchCountries(e.target.value)}/>
+    <Form.Control
+     type="text" 
+     placeholder="Search a Country" 
+     onChange={ e => setSearchCountries(e.target.value)}
+     style={{width:"50%", margin:"0 auto"}}
+
+     />
   </Form.Group>
   
 </Form>
