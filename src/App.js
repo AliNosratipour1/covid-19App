@@ -22,8 +22,9 @@ function App() {
 useEffect(()=>{
   axios
   .all([
-  axios.get("https://corona.lmao.ninja/all"),
-  axios.get("https://corona.lmao.ninja/countries")
+  axios.get("https://corona.lmao.ninja/v2/all"),
+  axios.get("https://corona.lmao.ninja/v2/countries")
+  //axios.get("https://corona.lmao.ninja/docs")
 ])
 
   .then(resArr =>{

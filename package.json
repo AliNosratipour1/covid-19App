@@ -1,7 +1,7 @@
 {
   "name": "covid-19",
   "version": "0.1.0",
-  "homepage" : "http://ashkan2017.github.io/covid-19App",
+  "homepage" : "https://ashkan2017.github.io/covid-19App",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
