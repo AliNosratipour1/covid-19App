@@ -55,9 +55,6 @@ const filterCountries = results.filter(item =>{
 });
 
 
-
-
-
 const countires = filterCountries.map(((data, i) =>{
   //const max = data.cases  data.countryInfo.flag
   return(
