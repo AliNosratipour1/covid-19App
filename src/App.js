@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Columns from 'react-columns';
 import Form from 'react-bootstrap/Form';
+import './App.css';
 
 
 
@@ -22,8 +23,8 @@ function App() {
 useEffect(()=>{
   axios
   .all([
-  axios.get("https://corona.lmao.ninja/v2/all"),
-  axios.get("https://corona.lmao.ninja/v2/countries")
+  axios.get("https://disease.sh/v2/all"),
+  axios.get("https://disease.sh/v2/countries")
   //axios.get("https://corona.lmao.ninja/docs")
 ])
 
@@ -58,7 +59,7 @@ const filterCountries = results.filter(item =>{
 
 
 const countires = filterCountries.map(((data, i) =>{
-  //const max = data.cases
+  //const max = data.cases  data.countryInfo.flag
   return(
 <Card  key={i}  bg='light' text='dark' className='text-center' style={{margin:"10px"}}>
 <Card.Img variant="top" src={data.countryInfo.flag} style={{height:"180px", width:"80%" , margin:"0 auto"}} />
@@ -104,7 +105,7 @@ var queries = [{
     
       <Card.Body>
         <Card.Title>Cases</Card.Title>
-        <Card.Text>{latest.cases}</Card.Text>
+        <Card.Text className='amar'  >{latest.cases}</Card.Text>
       </Card.Body>
       <Card.Footer>
         <small >Last updated {lastupdated}</small>
@@ -115,7 +116,7 @@ var queries = [{
   
     <Card.Body>
       <Card.Title>Deaths</Card.Title>
-      <Card.Text> {latest.deaths}</Card.Text>
+      <Card.Text className='amar' > {latest.deaths}</Card.Text>
     </Card.Body>
 
     <Card.Footer>
@@ -126,7 +127,7 @@ var queries = [{
 
     <Card.Body>
       <Card.Title>Recoverd</Card.Title>
-      <Card.Text>{latest.recovered}</Card.Text>
+      <Card.Text className='amar'>{latest.recovered}</Card.Text>
      
       
     </Card.Body>
